@@ -21,6 +21,7 @@ export const users = sqliteTable("user", {
   image: text("image"),
 
   // MyPT profile extension
+  username: text("username").unique(),
   locale: text("locale", { enum: ["tr", "en"] }).default("tr"),
   sex: text("sex", { enum: ["male", "female"] }),
   birthYear: integer("birth_year"),
@@ -212,6 +213,67 @@ export const workoutSessions = sqliteTable(
   (t) => [index("workout_user_started_idx").on(t.userId, t.startedAt)],
 );
 
+// ---------- Weight tracking ----------
+
+export const weightLogs = sqliteTable(
+  "weight_log",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    weightKg: real("weight_kg").notNull(),
+    loggedAt: integer("logged_at", { mode: "timestamp_ms" })
+      .notNull()
+      .default(sql`(unixepoch() * 1000)`),
+  },
+  (t) => [index("weight_user_logged_idx").on(t.userId, t.loggedAt)],
+);
+
+// ---------- Friendships + Privacy ----------
+
+export const friendships = sqliteTable(
+  "friendship",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    requesterId: text("requester_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    addresseeId: text("addressee_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    status: text("status", { enum: ["pending", "accepted", "blocked"] })
+      .notNull()
+      .default("pending"),
+    createdAt: integer("created_at", { mode: "timestamp_ms" })
+      .notNull()
+      .default(sql`(unixepoch() * 1000)`),
+    updatedAt: integer("updated_at", { mode: "timestamp_ms" })
+      .notNull()
+      .default(sql`(unixepoch() * 1000)`),
+  },
+  (t) => [
+    index("friendship_requester_idx").on(t.requesterId),
+    index("friendship_addressee_idx").on(t.addresseeId),
+  ],
+);
+
+export const friendPrivacy = sqliteTable("friend_privacy", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => users.id, { onDelete: "cascade" }),
+  shareWeeklySummary: integer("share_weekly_summary", { mode: "boolean" })
+    .notNull()
+    .default(true),
+  shareWeight: integer("share_weight", { mode: "boolean" }).notNull().default(false),
+  shareMeals: integer("share_meals", { mode: "boolean" }).notNull().default(false),
+  shareWater: integer("share_water", { mode: "boolean" }).notNull().default(false),
+});
+
 export const coachMessages = sqliteTable(
   "coach_message",
   {
@@ -264,3 +326,8 @@ export type WorkoutEntry = typeof workoutEntries.$inferSelect;
 export type NewWorkoutEntry = typeof workoutEntries.$inferInsert;
 export type CoachMessage = typeof coachMessages.$inferSelect;
 export type NewCoachMessage = typeof coachMessages.$inferInsert;
+export type WeightLog = typeof weightLogs.$inferSelect;
+export type NewWeightLog = typeof weightLogs.$inferInsert;
+export type Friendship = typeof friendships.$inferSelect;
+export type NewFriendship = typeof friendships.$inferInsert;
+export type FriendPrivacy = typeof friendPrivacy.$inferSelect;

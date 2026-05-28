@@ -21,6 +21,7 @@ export async function updateUserProfile(
     Pick<
       User,
       | "name"
+      | "username"
       | "locale"
       | "sex"
       | "birthYear"

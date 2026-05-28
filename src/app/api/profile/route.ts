@@ -1,4 +1,7 @@
 import { auth } from "@/auth";
+import { db } from "@/db/client";
+import { users } from "@/db/schema";
+import { and, eq, ne } from "drizzle-orm";
 import { getUserById, getWeeklyWorkoutCount, updateUserProfile } from "@/db/queries";
 import { fullProfileTargets } from "@/lib/calories";
 import { NextResponse } from "next/server";
@@ -8,6 +11,12 @@ export const runtime = "nodejs";
 
 const ProfilePatch = z.object({
   name: z.string().min(1).max(80).optional(),
+  username: z
+    .string()
+    .min(3)
+    .max(20)
+    .regex(/^[a-z0-9_]+$/, "Sadece küçük harf, rakam, _")
+    .optional(),
   locale: z.enum(["tr", "en"]).optional(),
   sex: z.enum(["male", "female"]).optional(),
   birthYear: z.number().int().min(1900).max(new Date().getFullYear()).optional(),
@@ -48,6 +57,21 @@ export async function PATCH(req: Request) {
   if (!body.success) {
     return NextResponse.json({ error: "Invalid body", details: body.error.format() }, { status: 400 });
   }
+  // username uniqueness check
+  if (body.data.username) {
+    const existing = await db
+      .select({ id: users.id })
+      .from(users)
+      .where(and(eq(users.username, body.data.username), ne(users.id, session.user.id)))
+      .limit(1);
+    if (existing[0]) {
+      return NextResponse.json(
+        { error: "Bu kullanıcı adı kullanılıyor" },
+        { status: 409 },
+      );
+    }
+  }
+
   await updateUserProfile(session.user.id, body.data);
   const user = await getUserById(session.user.id);
   return NextResponse.json({ user });

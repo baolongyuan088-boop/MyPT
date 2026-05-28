@@ -14,7 +14,7 @@ import { WeeklyBars } from "@/components/charts/weekly-bars";
 import { MacroRing } from "@/components/charts/macro-ring";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { Dumbbell } from "lucide-react";
+import { Activity } from "lucide-react";
 
 export default async function DashboardPage({
   params,
@@ -152,7 +152,7 @@ export default async function DashboardPage({
 
       <Link href="/workouts" className="block">
         <Button variant="outline" size="lg" className="w-full">
-          <Dumbbell className="h-5 w-5" />
+          <Activity className="h-5 w-5" />
           Antrenmanlar
         </Button>
       </Link>

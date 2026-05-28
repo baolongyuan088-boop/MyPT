@@ -2,36 +2,22 @@
 
 import { Link, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { Home, Plus, Dumbbell, User } from "lucide-react";
+import { Home, Plus, Activity, User } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { cn } from "@/lib/utils";
-
-function MyptMarkIcon({ className }: { className?: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src="/mypt.svg"
-      alt=""
-      aria-hidden
-      className={cn(
-        "object-contain invert dark:invert-0",
-        className,
-      )}
-    />
-  );
-}
+import { MyptMark } from "@/components/ui/mypt-mark";
 
 type IconComp = ComponentType<{ className?: string } & SVGProps<SVGSVGElement>>;
 
 const sideItems: Array<{
   href: string;
   key: "dashboard" | "workouts" | "insights" | "profile";
-  icon: IconComp | typeof MyptMarkIcon;
+  icon: IconComp | typeof MyptMark;
   isLogo?: boolean;
 }> = [
   { href: "/", key: "dashboard", icon: Home },
-  { href: "/workouts", key: "workouts", icon: Dumbbell },
-  { href: "/insights", key: "insights", icon: MyptMarkIcon, isLogo: true },
+  { href: "/workouts", key: "workouts", icon: Activity },
+  { href: "/insights", key: "insights", icon: MyptMark, isLogo: true },
   { href: "/profile", key: "profile", icon: User },
 ];
 

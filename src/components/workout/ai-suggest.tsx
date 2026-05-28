@@ -4,7 +4,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Loader2, Play, RefreshCw, Sparkles } from "lucide-react";
+import { Loader2, Play, RefreshCw } from "lucide-react";
+import { MyptMark } from "@/components/ui/mypt-mark";
 
 interface PlanEntry {
   exerciseId: string;
@@ -77,7 +78,7 @@ export function AiSuggest() {
     return (
       <div className="rounded-2xl bg-card p-5">
         <div className="flex items-start gap-3">
-          <Sparkles className="h-5 w-5 shrink-0 text-foreground" />
+          <MyptMark className="h-3 w-auto shrink-0 mt-1" />
           <div className="flex-1">
             <h2 className="text-base font-semibold">{t("aiSuggest")}</h2>
             <p className="mt-0.5 text-[13px] text-muted-foreground">
@@ -103,7 +104,7 @@ export function AiSuggest() {
           {generating ? (
             <Loader2 className="h-5 w-5 animate-spin" />
           ) : (
-            <Sparkles className="h-5 w-5" />
+            <MyptMark className="h-4 w-auto invert-0 dark:invert" />
           )}
           {generating ? t("thinking") : t("generate")}
         </Button>
@@ -115,7 +116,7 @@ export function AiSuggest() {
     <div className="space-y-3">
       <div className="rounded-2xl bg-card p-5">
         <div className="flex items-start gap-3">
-          <Sparkles className="h-5 w-5 shrink-0 text-foreground" />
+          <MyptMark className="h-3 w-auto shrink-0 mt-1" />
           <p className="flex-1 text-[14px] italic leading-snug text-muted-foreground">
             {plan.rationale}
           </p>

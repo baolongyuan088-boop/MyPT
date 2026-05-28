@@ -36,6 +36,7 @@ export function ProfileForm({
 
   const [form, setForm] = useState({
     name: initial.name ?? "",
+    username: initial.username ?? "",
     sex: initial.sex ?? "",
     birthYear: initial.birthYear ?? "",
     heightCm: initial.heightCm ?? "",
@@ -59,6 +60,7 @@ export function ProfileForm({
 
     const payload: Record<string, unknown> = {};
     if (form.name) payload.name = form.name;
+    if (form.username) payload.username = form.username.toLowerCase();
     if (form.sex) payload.sex = form.sex;
     if (form.birthYear) payload.birthYear = Number(form.birthYear);
     if (form.heightCm) payload.heightCm = Number(form.heightCm);
@@ -100,6 +102,18 @@ export function ProfileForm({
   return (
     <form onSubmit={onSubmit} className="space-y-6">
       <SectionGroup title={t("personal")}>
+        <RowField label={t("username")} hint={t("usernameHint")}>
+          <Input
+            value={form.username}
+            onChange={(e) =>
+              set("username", e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ""))
+            }
+            autoComplete="username"
+            placeholder="kullaniciadi"
+            minLength={3}
+            maxLength={20}
+          />
+        </RowField>
         <RowField label={t("name")}>
           <Input
             value={form.name}

@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { SectionGroup } from "@/components/ui/section";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { PrivacyToggles } from "@/components/privacy-toggles";
 
 export default async function SettingsPage({
   params,
@@ -33,6 +34,23 @@ export default async function SettingsPage({
           <LocaleSwitcher />
         </div>
       </SectionGroup>
+
+      <PrivacySection />
     </div>
+  );
+}
+
+async function PrivacySection() {
+  const t = await getTranslations("privacy");
+  return (
+    <section className="space-y-1.5">
+      <h2 className="px-4 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+        {t("title")}
+      </h2>
+      <PrivacyToggles />
+      <p className="px-4 text-[11px] leading-snug text-muted-foreground">
+        {t("hint")}
+      </p>
+    </section>
   );
 }

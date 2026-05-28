@@ -5,7 +5,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { ProfileForm } from "@/components/profile-form";
 import { SectionGroup, Row } from "@/components/ui/section";
 import { Link } from "@/i18n/navigation";
-import { History as HistoryIcon, Dumbbell, ChevronRight } from "lucide-react";
+import { History as HistoryIcon, Activity, ChevronRight, Scale, Users } from "lucide-react";
 
 export default async function ProfilePage({
   params,
@@ -53,13 +53,23 @@ export default async function ProfilePage({
 
       <SectionGroup>
         <NavRow
+          href="/weight"
+          icon={<Scale className="h-5 w-5" />}
+          label={tNav("weight")}
+        />
+        <NavRow
+          href="/friends"
+          icon={<Users className="h-5 w-5" />}
+          label={tNav("friends")}
+        />
+        <NavRow
           href="/history"
           icon={<HistoryIcon className="h-5 w-5" />}
           label={tNav("history")}
         />
         <NavRow
           href="/workouts"
-          icon={<Dumbbell className="h-5 w-5" />}
+          icon={<Activity className="h-5 w-5" />}
           label={tNav("workouts")}
           last
         />

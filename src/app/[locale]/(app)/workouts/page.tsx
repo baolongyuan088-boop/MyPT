@@ -6,7 +6,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { SectionGroup, Row } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { Plus, Dumbbell } from "lucide-react";
+import { Plus, Activity } from "lucide-react";
 import { formatDate, formatTime } from "@/lib/utils";
 
 export default async function WorkoutsPage({
@@ -63,7 +63,7 @@ export default async function WorkoutsPage({
               <Row
                 key={s.id}
                 onClick={undefined}
-                leading={<Dumbbell className="h-5 w-5" />}
+                leading={<Activity className="h-5 w-5" />}
                 label={
                   <Link
                     href={`/workouts/${s.id}`}
