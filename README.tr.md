@@ -1,6 +1,13 @@
-# MyPT. — Kişisel Antrenör
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./public/mypt.svg">
+    <img src="./public/icon-512.png" alt="MyPT." width="160" />
+  </picture>
+</p>
 
-**[English](./README.md) · [Türkçe](./README.tr.md)**
+<h1 align="center">MyPT. — Kişisel Antrenör</h1>
+
+<p align="center"><strong><a href="./README.md">English</a> · <a href="./README.tr.md">Türkçe</a></strong></p>
 
 > AI destekli kişisel antrenör ve beslenme takibi. Yediğini doğal dille anlat, AI parse etsin; antrenmanını başlat, koçla sohbet et, arkadaşlarınla paylaş.
 
