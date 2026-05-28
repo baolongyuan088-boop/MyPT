@@ -1,0 +1,172 @@
+{
+  "app": {
+    "name": "MyPT.",
+    "tagline": "Senin Kişisel Antrenörün",
+    "description": "AI destekli kalori ve beslenme takibi"
+  },
+  "nav": {
+    "dashboard": "Bugün",
+    "log": "Ekle",
+    "history": "Geçmiş",
+    "workouts": "Antrenman",
+    "insights": "Koç",
+    "coach": "Koç",
+    "profile": "Profil",
+    "settings": "Ayarlar",
+    "signin": "Giriş Yap",
+    "signout": "Çıkış Yap"
+  },
+  "coach": {
+    "title": "Koç",
+    "back": "Geri",
+    "placeholder": "Koçuna sor...",
+    "send": "Gönder",
+    "clear": "Sohbeti temizle",
+    "empty": "Aşağıdaki sorulardan birine tıkla ya da kendi sorunu yaz.",
+    "thinking": "Düşünüyor...",
+    "quick": {
+      "q1": "Bugün ne yiyeyim?",
+      "q2": "Hangi antrenmanı yapayım?",
+      "q3": "Yeterli su içtim mi?",
+      "q4": "Motivasyon istiyorum"
+    }
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "appearance": "Görünüm",
+    "theme": "Tema",
+    "themeLight": "Açık",
+    "themeDark": "Koyu",
+    "themeSystem": "Sistem",
+    "themeHint": "Sistem: cihaz ayarını takip eder.",
+    "language": "Dil",
+    "languageHint": "Arayüz ve AI önerileri seçtiğin dilde olur."
+  },
+  "signin": {
+    "title": "MyPT.'ye Hoş Geldin",
+    "subtitle": "Yemeklerini saat saat takip et, AI'dan kişisel öneri al.",
+    "google": "Google ile devam et",
+    "privacy": "Verilerin sadece sana ait. Açık kaynak."
+  },
+  "dashboard": {
+    "title": "Bugün",
+    "today": "Bugün",
+    "calories": "Kalori",
+    "remaining": "Kalan",
+    "of": "/",
+    "protein": "Protein",
+    "carbs": "Karbonhidrat",
+    "fat": "Yağ",
+    "empty": "Bugün henüz bir şey eklemedin. Aşağıdan başla.",
+    "addMeal": "Yemek Ekle",
+    "noGoal": "Önce profilini doldur: boy, kilo, yaş.",
+    "completeProfile": "Profili Tamamla"
+  },
+  "log": {
+    "title": "Yemek Ekle",
+    "subtitle": "Ne yedin? Doğal dille anlat, AI hesaplasın.",
+    "placeholder": "Örn: 2 yumurta, 1 dilim tam buğday ekmeği, 1 kaşık fıstık ezmesi, 1 bardak süt",
+    "time": "Saat",
+    "now": "Şimdi",
+    "submit": "AI ile Hesapla",
+    "calculating": "Hesaplanıyor...",
+    "parsed": "Tanındı",
+    "save": "Kaydet",
+    "edit": "Düzenle",
+    "totalCalories": "Toplam Kalori",
+    "items": "Öğeler"
+  },
+  "history": {
+    "title": "Geçmiş",
+    "noData": "Henüz kayıt yok."
+  },
+  "insights": {
+    "title": "Öneriler",
+    "generate": "Yeni Öneri Üret",
+    "generating": "Üretiliyor...",
+    "noSuggestions": "Henüz öneri yok. Yemek kaydedince burada gözükür."
+  },
+  "profile": {
+    "title": "Profil",
+    "name": "İsim",
+    "sex": "Cinsiyet",
+    "male": "Erkek",
+    "female": "Kadın",
+    "birthYear": "Doğum Yılı",
+    "heightCm": "Boy (cm)",
+    "weightKg": "Kilo (kg)",
+    "personal": "Kişisel",
+    "detected": "Tespit Edildi",
+    "bmi": "VKİ",
+    "bmiUnderweight": "Zayıf",
+    "bmiNormal": "Normal",
+    "bmiOverweight": "Fazla kilolu",
+    "bmiObese": "Obez",
+    "detectedGoal": "Hedef",
+    "detectedGoalHint": "VKİ {bmi} olduğu için otomatik seçildi.",
+    "detectedActivity": "Aktivite",
+    "detectedActivityHint": "Son 7 günde {n} antrenman yaptın.",
+    "activity": "Aktivite Seviyesi",
+    "activityLevels": {
+      "sedentary": "Hareketsiz",
+      "light": "Hafif",
+      "moderate": "Orta",
+      "active": "Aktif",
+      "very_active": "Çok Aktif"
+    },
+    "goal": "Hedef",
+    "goals": {
+      "lose": "Kilo Verme",
+      "maintain": "Koruma",
+      "gain": "Kilo Alma"
+    },
+    "bmr": "BMR (Bazal Metabolizma)",
+    "tdee": "TDEE (Toplam Günlük İhtiyaç)",
+    "targetCalories": "Hedef Kalori",
+    "save": "Kaydet",
+    "saved": "Kaydedildi",
+    "locale": "Dil"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "retry": "Tekrar dene",
+    "cancel": "Vazgeç",
+    "delete": "Sil",
+    "kcal": "kcal",
+    "g": "g"
+  },
+  "water": {
+    "title": "Su",
+    "target": "Hedef",
+    "glass": "Bardak",
+    "bottle": "Şişe",
+    "undo": "Geri al"
+  },
+  "workouts": {
+    "title": "Antrenmanlar",
+    "new": "Yeni Antrenman",
+    "start": "Başlat",
+    "finish": "Bitir",
+    "rest": "Dinlenme",
+    "work": "Çalışma",
+    "set": "Set",
+    "reps": "Tekrar",
+    "weight": "Ağırlık",
+    "duration": "Süre",
+    "empty": "Henüz antrenman yok.",
+    "selectExercises": "Egzersiz Seç",
+    "setsAndReps": "Set & Tekrar",
+    "skip": "Atla",
+    "next": "Sonraki",
+    "complete": "Tamamla",
+    "saved": "Kaydedildi",
+    "aiSuggest": "AI'dan Plan İste",
+    "aiSubtext": "Profilin ve hedefine göre özel plan üretir.",
+    "generate": "Plan Üret",
+    "regenerate": "Yeniden Üret",
+    "startThisPlan": "Bu Planı Başlat",
+    "orPickManually": "Veya Kendin Seç",
+    "thinking": "Düşünüyor..."
+  }
+}

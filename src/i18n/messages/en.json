@@ -1,0 +1,172 @@
+{
+  "app": {
+    "name": "MyPT.",
+    "tagline": "Your Personal Trainer",
+    "description": "AI-powered calorie & nutrition tracking"
+  },
+  "nav": {
+    "dashboard": "Today",
+    "log": "Log",
+    "history": "History",
+    "workouts": "Workouts",
+    "insights": "Coach",
+    "coach": "Coach",
+    "profile": "Profile",
+    "settings": "Settings",
+    "signin": "Sign in",
+    "signout": "Sign out"
+  },
+  "coach": {
+    "title": "Coach",
+    "back": "Back",
+    "placeholder": "Ask your coach...",
+    "send": "Send",
+    "clear": "Clear chat",
+    "empty": "Tap one of the questions below or type your own.",
+    "thinking": "Thinking...",
+    "quick": {
+      "q1": "What should I eat now?",
+      "q2": "Which workout today?",
+      "q3": "Did I drink enough water?",
+      "q4": "Give me motivation"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "themeHint": "System: follows your device preference.",
+    "language": "Language",
+    "languageHint": "UI and AI suggestions use your selected language."
+  },
+  "signin": {
+    "title": "Welcome to MyPT.",
+    "subtitle": "Track your meals hour by hour, get personal AI insights.",
+    "google": "Continue with Google",
+    "privacy": "Your data is yours. Open source."
+  },
+  "dashboard": {
+    "title": "Today",
+    "today": "Today",
+    "calories": "Calories",
+    "remaining": "Remaining",
+    "of": "/",
+    "protein": "Protein",
+    "carbs": "Carbs",
+    "fat": "Fat",
+    "empty": "Nothing logged today. Start below.",
+    "addMeal": "Log meal",
+    "noGoal": "Fill your profile first: height, weight, age.",
+    "completeProfile": "Complete profile"
+  },
+  "log": {
+    "title": "Log Meal",
+    "subtitle": "What did you eat? Tell me in plain words.",
+    "placeholder": "e.g. 2 eggs, 1 slice whole-wheat bread, 1 tbsp peanut butter, 1 glass milk",
+    "time": "Time",
+    "now": "Now",
+    "submit": "Calculate with AI",
+    "calculating": "Calculating...",
+    "parsed": "Detected",
+    "save": "Save",
+    "edit": "Edit",
+    "totalCalories": "Total calories",
+    "items": "Items"
+  },
+  "history": {
+    "title": "History",
+    "noData": "No records yet."
+  },
+  "insights": {
+    "title": "Insights",
+    "generate": "Generate New",
+    "generating": "Generating...",
+    "noSuggestions": "No insights yet. They'll appear once you log meals."
+  },
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "sex": "Sex",
+    "male": "Male",
+    "female": "Female",
+    "birthYear": "Birth year",
+    "heightCm": "Height (cm)",
+    "weightKg": "Weight (kg)",
+    "personal": "Personal",
+    "detected": "Detected",
+    "bmi": "BMI",
+    "bmiUnderweight": "Underweight",
+    "bmiNormal": "Normal",
+    "bmiOverweight": "Overweight",
+    "bmiObese": "Obese",
+    "detectedGoal": "Goal",
+    "detectedGoalHint": "Auto-selected because BMI is {bmi}.",
+    "detectedActivity": "Activity",
+    "detectedActivityHint": "{n} workouts in the last 7 days.",
+    "activity": "Activity",
+    "activityLevels": {
+      "sedentary": "Sedentary",
+      "light": "Light",
+      "moderate": "Moderate",
+      "active": "Active",
+      "very_active": "Very active"
+    },
+    "goal": "Goal",
+    "goals": {
+      "lose": "Lose weight",
+      "maintain": "Maintain",
+      "gain": "Gain weight"
+    },
+    "bmr": "BMR (Basal Metabolic Rate)",
+    "tdee": "TDEE (Total Daily Energy Expenditure)",
+    "targetCalories": "Target calories",
+    "save": "Save",
+    "saved": "Saved",
+    "locale": "Language"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "kcal": "kcal",
+    "g": "g"
+  },
+  "water": {
+    "title": "Water",
+    "target": "Target",
+    "glass": "Glass",
+    "bottle": "Bottle",
+    "undo": "Undo"
+  },
+  "workouts": {
+    "title": "Workouts",
+    "new": "New Workout",
+    "start": "Start",
+    "finish": "Finish",
+    "rest": "Rest",
+    "work": "Work",
+    "set": "Set",
+    "reps": "Reps",
+    "weight": "Weight",
+    "duration": "Duration",
+    "empty": "No workouts yet.",
+    "selectExercises": "Select Exercises",
+    "setsAndReps": "Sets & Reps",
+    "skip": "Skip",
+    "next": "Next",
+    "complete": "Complete",
+    "saved": "Saved",
+    "aiSuggest": "Get AI Plan",
+    "aiSubtext": "Custom plan based on your profile and goal.",
+    "generate": "Generate",
+    "regenerate": "Regenerate",
+    "startThisPlan": "Start This Plan",
+    "orPickManually": "Or Pick Manually",
+    "thinking": "Thinking..."
+  }
+}
