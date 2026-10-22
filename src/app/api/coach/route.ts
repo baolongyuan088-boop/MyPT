@@ -1,3 +1,4 @@
+import { safeAIError } from "@/lib/ai/client";
 import { auth } from "@/auth";
 import { db } from "@/db/client";
 import { coachMessages, workoutSessions, workoutEntries, exercises } from "@/db/schema";
@@ -149,7 +150,7 @@ export async function POST(req: Request) {
     );
   } catch (err) {
     return NextResponse.json(
-      { error: err instanceof Error ? err.message : "AI failed", userMsg },
+      { error: safeAIError(err), userMsg },
       { status: 502 },
     );
   }

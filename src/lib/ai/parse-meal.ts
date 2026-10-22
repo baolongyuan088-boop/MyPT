@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ai, MODEL } from "./client";
+import { getAI } from "./client";
 
 export const MealItemSchema = z.object({
   name: z.string().min(1),
@@ -79,8 +79,9 @@ export async function parseMeal(
   rawText: string,
   locale: "tr" | "en" = "tr",
 ): Promise<MealParse> {
+  const { ai, model } = await getAI();
   const completion = await ai.chat.completions.create({
-    model: MODEL,
+    model,
     messages: [
       { role: "system", content: locale === "en" ? SYSTEM_EN : SYSTEM_TR },
       { role: "user", content: rawText },

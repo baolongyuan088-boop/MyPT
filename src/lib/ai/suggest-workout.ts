@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ai, MODEL } from "./client";
+import { getAI } from "./client";
 
 const SYSTEM_TR = `Sen kişisel antrenörsün. Kullanıcının profil, hedef ve son 7 gün antrenmanına bakarak
 TEK BİR antrenman planı öner. Sadece geçerli JSON dön.
@@ -69,8 +69,9 @@ export async function generateWorkoutPlan(
   locale: "tr" | "en" = "tr",
 ): Promise<WorkoutPlan> {
   const payload = JSON.stringify(ctx, null, 2);
+  const { ai, model } = await getAI();
   const completion = await ai.chat.completions.create({
-    model: MODEL,
+    model,
     messages: [
       { role: "system", content: locale === "en" ? SYSTEM_EN : SYSTEM_TR },
       { role: "user", content: payload },

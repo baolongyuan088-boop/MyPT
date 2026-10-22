@@ -1,3 +1,5 @@
+import { localMode } from "@/lib/local-mode";
+import { Link } from "@/i18n/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { SectionGroup } from "@/components/ui/section";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -35,6 +37,7 @@ export default async function SettingsPage({
         </div>
       </SectionGroup>
 
+      {localMode() && <Link href="/ai-connect" className="block rounded-2xl bg-card p-4">连接 AI 管家 →</Link>}
       <PrivacySection />
     </div>
   );

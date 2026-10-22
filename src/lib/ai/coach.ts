@@ -1,4 +1,4 @@
-import { ai, MODEL } from "./client";
+import { getAI } from "./client";
 
 const SYSTEM_TR = `Sen MyPT, kullanıcının kişisel antrenörü ve beslenme koçusun.
 Samimi, profesyonel, doğrudan konuş. Türkçe.
@@ -63,10 +63,11 @@ export async function generateCoachReply(
   const ctxText = JSON.stringify(ctx, null, 2);
   const systemContent =
     (locale === "en" ? SYSTEM_EN : SYSTEM_TR) +
-    `\n\nCONTEXT:\n${ctxText}`;
+    `\n\n补充规则（优先）：用用户发消息的语言回答，中文输入就用中文。先理解用户的状态，再给可选的小建议。不要催打卡、羞辱或凭空夸奖；鼓励必须引用真实记录。记录为空不代表没有吃饭或运动。热量目标只作参考，不鼓励极端节食。不要声称执行了记录、修改计划等未实际执行的操作。缺少口味、份量或身体状态时简短询问。\n\nCONTEXT:\n${ctxText}`;
 
+  const { ai, model } = await getAI();
   const completion = await ai.chat.completions.create({
-    model: MODEL,
+    model,
     messages: [
       { role: "system", content: systemContent },
       ...history.map((h) => ({ role: h.role, content: h.content })),
@@ -81,10 +82,5 @@ export async function generateCoachReply(
     | { content?: string | null; reasoning_content?: string | null }
     | undefined;
 
-  let text = msg?.content?.trim() ?? "";
-  if (!text && msg?.reasoning_content) {
-    const parts = msg.reasoning_content.trim().split(/\n{2,}/);
-    text = parts.pop()?.trim() ?? "";
-  }
-  return text;
+  return msg?.content?.trim() ?? "";
 }

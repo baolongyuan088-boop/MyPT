@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { Loader2, Send, Sparkles, Trash2 } from "lucide-react";
@@ -171,7 +172,7 @@ export function CoachChat({ initial }: Props) {
             role="alert"
             className="rounded-2xl bg-destructive/15 px-4 py-3 text-sm text-destructive"
           >
-            {error}
+            {error}<Link href="/ai-connect" className="ml-2 underline">连接设置</Link>
           </div>
         )}
         <div ref={endRef} />

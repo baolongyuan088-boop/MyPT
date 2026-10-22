@@ -1,3 +1,4 @@
+import { localMode } from "@/lib/local-mode";
 import { signIn, auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
@@ -34,6 +35,12 @@ export default async function SignInPage({
             <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
           </div>
 
+          {localMode() && <form action={async () => {
+            "use server";
+            if (!localMode()) return;
+            await signIn("local", { redirectTo: `/${locale}/ai-connect` });
+          }}><Button type="submit" size="lg" className="w-full">进入本机体验 →</Button>
+          <p className="mt-3 text-xs text-muted-foreground">无需 Google 账号，仅供这台电脑本地调试。</p></form>}
           <form
             action={async () => {
               "use server";

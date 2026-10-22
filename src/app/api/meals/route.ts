@@ -1,3 +1,4 @@
+import { safeAIError } from "@/lib/ai/client";
 import { auth } from "@/auth";
 import { db } from "@/db/client";
 import {
@@ -32,7 +33,7 @@ export async function POST(req: Request) {
     parsed = await parseMeal(body.data.rawText, body.data.locale);
   } catch (err) {
     return NextResponse.json(
-      { error: "AI parse failed", message: err instanceof Error ? err.message : String(err) },
+      { error: "AI parse failed", message: safeAIError(err) },
       { status: 502 },
     );
   }

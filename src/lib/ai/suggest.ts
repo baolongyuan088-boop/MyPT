@@ -1,4 +1,4 @@
-import { ai, MODEL } from "./client";
+import { getAI } from "./client";
 
 const SYSTEM_TR = `Sen kişisel bir antrenör ve beslenme uzmanısın. Kullanıcının profilini, hedefini ve
 son günlerdeki yemek loglarını okuyarak KISA (2-4 cümle), uygulanabilir bir öneri ver.
@@ -94,8 +94,9 @@ export async function generateSuggestion(
 ): Promise<string> {
   const userPayload = JSON.stringify(ctx, null, 2);
 
+  const { ai, model } = await getAI();
   const completion = await ai.chat.completions.create({
-    model: MODEL,
+    model,
     messages: [
       { role: "system", content: locale === "en" ? SYSTEM_EN : SYSTEM_TR },
       { role: "user", content: userPayload },
