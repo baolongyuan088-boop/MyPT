@@ -35,7 +35,7 @@ export function AiSuggest() {
       const res = await fetch("/api/workouts/suggest", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ locale: locale === "en" ? "en" : "tr" }),
+        body: JSON.stringify({ locale }),
       });
       if (!res.ok) {
         const j = (await res.json().catch(() => ({}))) as { error?: string };

@@ -58,11 +58,11 @@ export async function generateCoachReply(
   ctx: CoachContext,
   history: CoachHistoryItem[],
   newMessage: string,
-  locale: "tr" | "en" = "tr",
+  locale: "zh" | "tr" | "en" = "tr",
 ): Promise<string> {
   const ctxText = JSON.stringify(ctx, null, 2);
   const systemContent =
-    (locale === "en" ? SYSTEM_EN : SYSTEM_TR) +
+    (locale === "tr" ? SYSTEM_TR : SYSTEM_EN) +
     `\n\n补充规则（优先）：用用户发消息的语言回答，中文输入就用中文。先理解用户的状态，再给可选的小建议。不要催打卡、羞辱或凭空夸奖；鼓励必须引用真实记录。记录为空不代表没有吃饭或运动。热量目标只作参考，不鼓励极端节食。不要声称执行了记录、修改计划等未实际执行的操作。缺少口味、份量或身体状态时简短询问。\n\nCONTEXT:\n${ctxText}`;
 
   const { ai, model } = await getAI();

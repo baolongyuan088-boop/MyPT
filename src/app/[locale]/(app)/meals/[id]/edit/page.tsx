@@ -2,7 +2,7 @@ import { auth } from "@/auth";
 import { db } from "@/db/client";
 import { meals } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { MealEditForm } from "@/components/meal-edit-form";
 
@@ -13,6 +13,7 @@ export default async function MealEditPage({
 }) {
   const { locale, id } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("editMeal");
 
   const session = await auth();
   const rows = await db
@@ -28,7 +29,7 @@ export default async function MealEditPage({
     <div className="space-y-6">
       <header className="px-1">
         <h1 className="text-[34px] font-bold tracking-tight leading-tight">
-          Düzenle
+          {t("title")}
         </h1>
       </header>
       <MealEditForm initial={meal} />

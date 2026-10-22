@@ -16,10 +16,10 @@ export function WeeklyBars({ series, target, label }: Props) {
   const [hover, setHover] = useState<number | null>(null);
   const max = Math.max(target ?? 0, ...series.map((d) => d.calories), 1);
 
-  const dowFmt = new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-GB", {
+  const dowFmt = new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : locale === "tr" ? "tr-TR" : "en-GB", {
     weekday: "narrow",
   });
-  const fullFmt = new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-GB", {
+  const fullFmt = new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : locale === "tr" ? "tr-TR" : "en-GB", {
     day: "numeric",
     month: "short",
   });
@@ -92,7 +92,7 @@ export function WeeklyBars({ series, target, label }: Props) {
 
       {target && target > 0 && (
         <div className="mt-3 flex items-center justify-between border-t border-border pt-2 text-[11px]">
-          <span className="text-muted-foreground">Hedef</span>
+          <span className="text-muted-foreground">{locale === "zh" ? "参考目标" : locale === "en" ? "Target" : "Hedef"}</span>
           <span className="tabular-nums">{target} kcal</span>
         </div>
       )}

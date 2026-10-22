@@ -1,3 +1,5 @@
+
+import { exerciseName } from "@/lib/exercise-name";
 import { auth } from "@/auth";
 import { db } from "@/db/client";
 import { workoutSessions, workoutEntries, exercises } from "@/db/schema";
@@ -64,7 +66,7 @@ export default async function WorkoutSessionPage({
             {joinedEntries.map((j) => (
               <li key={j.entry.id} className="flex items-center justify-between gap-3">
                 <span className="truncate text-[15px]">
-                  {locale === "en" ? j.exercise?.nameEn : j.exercise?.nameTr}
+                  {exerciseName(j.exercise, locale)}
                 </span>
                 <span className="text-sm text-muted-foreground">
                   {j.entry.sets} × {j.entry.reps ?? "—"}
@@ -80,7 +82,7 @@ export default async function WorkoutSessionPage({
   // Active session — show timer
   const timerEntries: TimerEntry[] = joinedEntries.map((j) => ({
     id: j.entry.id,
-    exerciseName: (locale === "en" ? j.exercise?.nameEn : j.exercise?.nameTr) ?? "—",
+    exerciseName: (exerciseName(j.exercise, locale)) ?? "—",
     sets: j.entry.sets,
     reps: j.entry.reps,
     restSec: j.exercise?.defaultRest ?? 60,

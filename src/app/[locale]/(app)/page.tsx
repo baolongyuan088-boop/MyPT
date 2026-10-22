@@ -87,7 +87,7 @@ export default async function DashboardPage({
     <div className="space-y-6">
       <header className="space-y-1 px-1">
         <p className="text-[13px] font-medium text-muted-foreground">
-          {new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-GB", {
+          {new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : locale === "tr" ? "tr-TR" : "en-GB", {
             weekday: "long",
             day: "numeric",
             month: "long",
@@ -123,7 +123,7 @@ export default async function DashboardPage({
       {totals.calories > 0 && (
         <section className="space-y-1.5">
           <h2 className="px-4 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-            Makro Dağılımı
+            {t("macroSplit")}
           </h2>
           <div className="rounded-2xl bg-card p-4">
             <MacroRing
@@ -145,19 +145,19 @@ export default async function DashboardPage({
 
       <section className="space-y-1.5">
         <h2 className="px-4 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-          Son 7 Gün
+          {t("last7")}
         </h2>
-        <WeeklyBars series={weekSeries} target={targets?.target} label={`Ortalama: ${avg7} kcal`} />
+        <WeeklyBars series={weekSeries} target={targets?.target} label={t("average", {n: avg7})} />
       </section>
 
       <Link href="/workouts" className="block">
         <Button variant="outline" size="lg" className="w-full">
           <Activity className="h-5 w-5" />
-          Antrenmanlar
+          {t("workouts")}
         </Button>
       </Link>
 
-      <MealTimeline meals={mealsToday} title="Bugünkü Öğünler" />
+      <MealTimeline meals={mealsToday} title={t("todayMeals")} />
     </div>
   );
 }

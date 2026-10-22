@@ -41,7 +41,7 @@ export function MealForm() {
         body: JSON.stringify({
           rawText: text.trim(),
           eatenAt: eatenAt.toISOString(),
-          locale: locale === "en" ? "en" : "tr",
+          locale,
         }),
       });
       if (!res.ok) {

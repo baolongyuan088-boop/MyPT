@@ -66,14 +66,14 @@ export interface WorkoutSuggestContext {
 
 export async function generateWorkoutPlan(
   ctx: WorkoutSuggestContext,
-  locale: "tr" | "en" = "tr",
+  locale: "zh" | "tr" | "en" = "tr",
 ): Promise<WorkoutPlan> {
   const payload = JSON.stringify(ctx, null, 2);
   const { ai, model } = await getAI();
   const completion = await ai.chat.completions.create({
     model,
     messages: [
-      { role: "system", content: locale === "en" ? SYSTEM_EN : SYSTEM_TR },
+      { role: "system", content: (locale === "tr" ? SYSTEM_TR : SYSTEM_EN) + (locale === "zh" ? "\n请用简体中文回答。食物名称、说明和建议均用中文；JSON 字段名和动作 ID 保持原格式。份量缺失时明确说明为估算，优先使用用户提供的份量。" : "") },
       { role: "user", content: payload },
     ],
     response_format: { type: "json_object" },

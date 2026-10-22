@@ -88,7 +88,7 @@ export function FriendsPanel() {
   }
 
   async function remove(id: string) {
-    if (!confirm(locale === "en" ? "Remove friend?" : "Arkadaşı çıkar?")) return;
+    if (!confirm(locale === "zh" ? "确定移除这位好友？" : locale === "en" ? "Remove friend?" : "Arkadaşı çıkar?")) return;
     await fetch(`/api/friends/${id}`, { method: "DELETE" });
     await refresh();
   }

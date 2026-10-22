@@ -1,3 +1,5 @@
+import { betaMode } from "@/lib/beta-access";
+import { AuthError } from "next-auth";
 import { localMode } from "@/lib/local-mode";
 import { signIn, auth } from "@/auth";
 import { redirect } from "next/navigation";
@@ -10,7 +12,7 @@ export default async function SignInPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ callbackUrl?: string }>;
+  searchParams: Promise<{ callbackUrl?: string; error?: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -20,7 +22,7 @@ export default async function SignInPage({
     redirect(`/${locale}`);
   }
 
-  const { callbackUrl } = await searchParams;
+  const { callbackUrl, error } = await searchParams;
   const t = await getTranslations("signin");
   const tApp = await getTranslations("app");
 
@@ -41,7 +43,16 @@ export default async function SignInPage({
             await signIn("local", { redirectTo: `/${locale}/ai-connect` });
           }}><Button type="submit" size="lg" className="w-full">进入本机体验 →</Button>
           <p className="mt-3 text-xs text-muted-foreground">无需 Google 账号，仅供这台电脑本地调试。</p></form>}
-          <form
+          {betaMode() ? <form className="space-y-4 text-left" action={async (formData) => {
+            "use server";
+            try { await signIn("invite", { code: formData.get("code"), redirectTo: `/${locale}/insights` }); }
+            catch (e) { if (e instanceof AuthError) redirect(`/${locale}/signin?error=invite`); throw e; }
+          }}>
+            <label className="block text-sm">朋友内测邀请码<input name="code" type="password" required autoComplete="off" maxLength={256} className="mt-2 w-full rounded-xl border border-border bg-background p-3" /></label>
+            <p className="text-xs leading-relaxed text-muted-foreground">使用专属邀请码进入，记录按邀请码隔离。请勿转发给其他人。AI 对话会向模型服务发送你的消息、个人档案及近期饮食和训练记录。</p>
+            {error && <p role="alert" className="text-sm text-red-500">邀请码无效或已过期，请联系邀请人。</p>}
+            <Button type="submit" size="lg" className="w-full">开始体验</Button>
+          </form> : <form
             action={async () => {
               "use server";
               await signIn("google", {
@@ -52,7 +63,7 @@ export default async function SignInPage({
             <Button type="submit" size="lg" className="w-full">
               <GoogleGlyph /> {t("google")}
             </Button>
-          </form>
+          </form>}
 
           <p className="text-xs text-muted-foreground">{t("privacy")}</p>
         </div>

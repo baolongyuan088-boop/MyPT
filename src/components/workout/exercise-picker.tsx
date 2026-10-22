@@ -1,5 +1,7 @@
 "use client";
 
+import { exerciseName, categoriesZh } from "@/lib/exercise-name";
+
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
@@ -62,7 +64,7 @@ export function ExercisePicker() {
         ...cur,
         {
           exerciseId: e.id,
-          exerciseName: locale === "en" ? e.nameEn : e.nameTr,
+          exerciseName: exerciseName(e, locale),
           defaultRest: e.defaultRest,
           sets: 3,
           reps: 10,
@@ -128,7 +130,7 @@ export function ExercisePicker() {
                 </span>
                 <button
                   onClick={() => remove(i)}
-                  aria-label="Kaldır"
+                  aria-label={locale === "zh" ? "移除动作" : "Remove exercise"}
                   className="grid h-7 w-7 place-items-center rounded-full text-muted-foreground hover:bg-foreground/10 hover:text-destructive"
                 >
                   <X className="h-4 w-4" />
@@ -183,7 +185,7 @@ export function ExercisePicker() {
                 className="flex w-full items-center justify-between gap-2 px-4 py-3.5 text-left hover:bg-foreground/[0.03]"
               >
                 <span className="text-[15px] font-medium">
-                  {locale === "en" ? labels.en : labels.tr}
+                  {locale === "zh" ? categoriesZh[cat] ?? cat : locale === "en" ? labels.en : labels.tr}
                 </span>
                 <ChevronDown
                   className={cn(
@@ -214,7 +216,7 @@ export function ExercisePicker() {
                             {isPicked && <Plus className="h-3 w-3 rotate-45" />}
                           </span>
                           <span className="text-[14px]">
-                            {locale === "en" ? e.nameEn : e.nameTr}
+                            {exerciseName(e, locale)}
                           </span>
                         </button>
                       </li>

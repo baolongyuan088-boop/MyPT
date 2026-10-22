@@ -17,7 +17,7 @@ const ProfilePatch = z.object({
     .max(20)
     .regex(/^[a-z0-9_]+$/, "Sadece küçük harf, rakam, _")
     .optional(),
-  locale: z.enum(["tr", "en"]).optional(),
+  locale: z.enum(["zh", "en", "tr"]).optional(),
   sex: z.enum(["male", "female"]).optional(),
   birthYear: z.number().int().min(1900).max(new Date().getFullYear()).optional(),
   heightCm: z.number().min(50).max(260).optional(),

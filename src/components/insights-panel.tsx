@@ -21,7 +21,7 @@ export function InsightsPanel({ initial }: { initial: AiSuggestion[] }) {
       const res = await fetch("/api/insights", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ locale: locale === "en" ? "en" : "tr", windowDays: 3 }),
+        body: JSON.stringify({ locale, windowDays: 3 }),
       });
       if (!res.ok) {
         const j = (await res.json().catch(() => ({}))) as { error?: string };
@@ -36,7 +36,7 @@ export function InsightsPanel({ initial }: { initial: AiSuggestion[] }) {
     }
   }
 
-  const dateFmt = new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-GB", {
+  const dateFmt = new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : locale === "tr" ? "tr-TR" : "en-GB", {
     day: "numeric",
     month: "long",
     hour: "2-digit",

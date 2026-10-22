@@ -64,7 +64,7 @@ export function WeightTracker({ initial }: Props) {
   }
 
   async function onDelete(id: string) {
-    if (!confirm(locale === "en" ? "Delete this entry?" : "Bu kaydı sil?")) return;
+    if (!confirm(locale === "zh" ? "确定删除这条体重记录？" : locale === "en" ? "Delete this entry?" : "Bu kaydı sil?")) return;
     const res = await fetch(`/api/weight/${id}`, { method: "DELETE" });
     if (res.ok) setRows((r) => r.filter((x) => x.id !== id));
   }

@@ -104,7 +104,12 @@
     "empty": "Bugün henüz bir şey eklemedin. Aşağıdan başla.",
     "addMeal": "Yemek Ekle",
     "noGoal": "Önce profilini doldur: boy, kilo, yaş.",
-    "completeProfile": "Profili Tamamla"
+    "completeProfile": "Profili Tamamla",
+    "macroSplit": "Makro Dağılımı",
+    "last7": "Son 7 Gün",
+    "average": "Ortalama: {n} kcal",
+    "workouts": "Antrenmanlar",
+    "todayMeals": "Bugünkü Öğünler"
   },
   "log": {
     "title": "Yemek Ekle",
@@ -122,7 +127,12 @@
   },
   "history": {
     "title": "Geçmiş",
-    "noData": "Henüz kayıt yok."
+    "noData": "Henüz kayıt yok.",
+    "last14": "Son 14 Gün",
+    "average": "Ortalama",
+    "days": "Gün",
+    "total": "Toplam",
+    "averageLabel": "Ortalama: {n} kcal"
   },
   "insights": {
     "title": "Öneriler",
@@ -213,6 +223,24 @@
     "regenerate": "Yeniden Üret",
     "startThisPlan": "Bu Planı Başlat",
     "orPickManually": "Veya Kendin Seç",
-    "thinking": "Düşünüyor..."
+    "thinking": "Düşünüyor...",
+    "seconds": "sn"
+  },
+  "editMeal": {
+    "title": "Düzenle",
+    "description": "Açıklama",
+    "time": "Zaman",
+    "date": "Tarih",
+    "clock": "Saat",
+    "nutrition": "Besin Değerleri",
+    "hint": "AI tahminini manuel düzeltebilirsin.",
+    "calories": "Kalori (kcal)",
+    "protein": "Protein (g)",
+    "carbs": "Karbonhidrat (g)",
+    "fat": "Yağ (g)",
+    "save": "Kaydet",
+    "delete": "Sil",
+    "confirm": "Bu öğünü silmek istediğinden emin misin?",
+    "error": "İşlem başarısız. Tekrar dene."
   }
 }

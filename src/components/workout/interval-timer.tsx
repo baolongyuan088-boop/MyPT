@@ -193,7 +193,7 @@ export function IntervalTimer({ sessionId, entries, startedAtMs }: Props) {
             {t("rest")}
           </p>
           <p className="mt-2 text-7xl font-bold tabular-nums">{remaining}</p>
-          <p className="mt-1 text-sm text-muted-foreground">sn</p>
+          <p className="mt-1 text-sm text-muted-foreground">{t("seconds")}</p>
           <div className="mt-4 flex justify-center gap-3">
             <Button
               variant="outline"

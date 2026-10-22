@@ -25,6 +25,10 @@ export async function saveLocalAI(config: AIConfig) {
 export async function getAI() {
   const config = await readAIConfig();
   if (!config.apiKey || !config.model) throw new Error("请先在连接 AI 页面填写密钥和模型 ID。");
+  if (process.env.NODE_ENV === "production" || process.env.MYPT_BETA_MODE === "1") {
+    const { reserveAICall } = await import("../ai-quota");
+    await reserveAICall();
+  }
   return { ai: new OpenAI({ apiKey: config.apiKey, baseURL: config.baseURL, timeout: 60000, maxRetries: 0 }), model: config.model };
 }
 export function safeAIError(error: unknown): string {

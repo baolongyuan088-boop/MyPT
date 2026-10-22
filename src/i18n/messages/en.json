@@ -104,7 +104,12 @@
     "empty": "Nothing logged today. Start below.",
     "addMeal": "Log meal",
     "noGoal": "Fill your profile first: height, weight, age.",
-    "completeProfile": "Complete profile"
+    "completeProfile": "Complete profile",
+    "macroSplit": "Nutrients",
+    "last7": "Last 7 days",
+    "average": "Average: {n} kcal",
+    "workouts": "My workouts",
+    "todayMeals": "Today’s meals"
   },
   "log": {
     "title": "Log Meal",
@@ -122,7 +127,12 @@
   },
   "history": {
     "title": "History",
-    "noData": "No records yet."
+    "noData": "No records yet.",
+    "last14": "Last 14 days",
+    "average": "Average",
+    "days": "Days logged",
+    "total": "Total",
+    "averageLabel": "Average: {n} kcal"
   },
   "insights": {
     "title": "Insights",
@@ -213,6 +223,24 @@
     "regenerate": "Regenerate",
     "startThisPlan": "Start This Plan",
     "orPickManually": "Or Pick Manually",
-    "thinking": "Thinking..."
+    "thinking": "Thinking...",
+    "seconds": "seconds"
+  },
+  "editMeal": {
+    "title": "Edit meal",
+    "description": "Description",
+    "time": "Meal time",
+    "date": "Date",
+    "clock": "Time",
+    "nutrition": "Nutrition",
+    "hint": "Adjust the AI estimate to match your portion.",
+    "calories": "Calories (kcal)",
+    "protein": "Protein (g)",
+    "carbs": "Carbs (g)",
+    "fat": "Fat (g)",
+    "save": "Save",
+    "delete": "Delete",
+    "confirm": "Delete this meal?",
+    "error": "Could not complete the action. Try again."
   }
 }

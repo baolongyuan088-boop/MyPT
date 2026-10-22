@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,7 @@ function toDateInput(d: Date) {
 
 export function MealEditForm({ initial }: { initial: Meal }) {
   const router = useRouter();
+  const t = useTranslations("editMeal");
   const initialDate =
     initial.eatenAt instanceof Date
       ? initial.eatenAt
@@ -60,7 +62,7 @@ export function MealEditForm({ initial }: { initial: Meal }) {
       });
       if (!res.ok) {
         const j = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(j.error ?? "Failed");
+        throw new Error(j.error ?? t("error"));
       }
       router.push("/");
       router.refresh();
@@ -72,11 +74,11 @@ export function MealEditForm({ initial }: { initial: Meal }) {
   }
 
   async function onDelete() {
-    if (!confirm("Bu öğünü silmek istediğinden emin misin?")) return;
+    if (!confirm(t("confirm"))) return;
     setDeleting(true);
     try {
       const res = await fetch(`/api/meals/${initial.id}`, { method: "DELETE" });
-      if (!res.ok) throw new Error("Failed");
+      if (!res.ok) throw new Error(t("error"));
       router.push("/");
       router.refresh();
     } catch (err) {
@@ -87,7 +89,7 @@ export function MealEditForm({ initial }: { initial: Meal }) {
 
   return (
     <form onSubmit={onSubmit} className="space-y-5">
-      <SectionGroup title="Açıklama">
+      <SectionGroup title={t("description")}>
         <div className="px-4 py-3">
           <Textarea
             value={rawText}
@@ -99,8 +101,8 @@ export function MealEditForm({ initial }: { initial: Meal }) {
         </div>
       </SectionGroup>
 
-      <SectionGroup title="Zaman">
-        <RowField label="Tarih">
+      <SectionGroup title={t("time")}>
+        <RowField label={t("date")}>
           <input
             type="date"
             value={date}
@@ -109,7 +111,7 @@ export function MealEditForm({ initial }: { initial: Meal }) {
             className="h-10 w-full cursor-pointer rounded-lg border border-border bg-muted/40 px-3 text-[15px] text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           />
         </RowField>
-        <RowField label="Saat">
+        <RowField label={t("clock")}>
           <input
             type="time"
             value={time}
@@ -120,8 +122,8 @@ export function MealEditForm({ initial }: { initial: Meal }) {
         </RowField>
       </SectionGroup>
 
-      <SectionGroup title="Besin Değerleri" footer="AI tahminini manuel düzeltebilirsin.">
-        <RowField label="Kalori (kcal)">
+      <SectionGroup title={t("nutrition")} footer={t("hint")}>
+        <RowField label={t("calories")}>
           <Input
             type="number"
             inputMode="numeric"
@@ -130,7 +132,7 @@ export function MealEditForm({ initial }: { initial: Meal }) {
             onChange={(e) => setCalories(e.target.value)}
           />
         </RowField>
-        <RowField label="Protein (g)">
+        <RowField label={t("protein")}>
           <Input
             type="number"
             inputMode="decimal"
@@ -140,7 +142,7 @@ export function MealEditForm({ initial }: { initial: Meal }) {
             onChange={(e) => setProteinG(e.target.value)}
           />
         </RowField>
-        <RowField label="Karbonhidrat (g)">
+        <RowField label={t("carbs")}>
           <Input
             type="number"
             inputMode="decimal"
@@ -150,7 +152,7 @@ export function MealEditForm({ initial }: { initial: Meal }) {
             onChange={(e) => setCarbsG(e.target.value)}
           />
         </RowField>
-        <RowField label="Yağ (g)">
+        <RowField label={t("fat")}>
           <Input
             type="number"
             inputMode="decimal"
@@ -173,7 +175,7 @@ export function MealEditForm({ initial }: { initial: Meal }) {
 
       <Button type="submit" size="lg" disabled={saving} className="w-full">
         {saving && <Loader2 className="h-4 w-4 animate-spin" />}
-        Kaydet
+        {t("save")}
       </Button>
 
       <Button
@@ -185,7 +187,7 @@ export function MealEditForm({ initial }: { initial: Meal }) {
         className="w-full text-destructive hover:text-destructive"
       >
         {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
-        Sil
+        {t("delete")}
       </Button>
     </form>
   );

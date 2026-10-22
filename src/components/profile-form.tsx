@@ -32,6 +32,7 @@ export function ProfileForm({
   initialTargets: Targets | null;
 }) {
   const t = useTranslations("profile");
+  const td = useTranslations("dashboard");
   const tCommon = useTranslations("common");
 
   const [form, setForm] = useState({
@@ -109,7 +110,7 @@ export function ProfileForm({
               set("username", e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ""))
             }
             autoComplete="username"
-            placeholder="kullaniciadi"
+            placeholder="your_name"
             minLength={3}
             maxLength={20}
           />
@@ -196,9 +197,9 @@ export function ProfileForm({
               <Stat label={t("targetCalories")} value={targets.target} unit={tCommon("kcal")} highlight />
             </div>
             <div className="grid grid-cols-3 gap-px bg-border">
-              <Stat label="P" value={targets.proteinG} unit="g" small />
-              <Stat label="K" value={targets.carbsG} unit="g" small />
-              <Stat label="Y" value={targets.fatG} unit="g" small />
+              <Stat label={td("protein")} value={targets.proteinG} unit="g" small />
+              <Stat label={td("carbs")} value={targets.carbsG} unit="g" small />
+              <Stat label={td("fat")} value={targets.fatG} unit="g" small />
             </div>
           </SectionGroup>
         </>

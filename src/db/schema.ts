@@ -22,7 +22,7 @@ export const users = sqliteTable("user", {
 
   // MyPT profile extension
   username: text("username").unique(),
-  locale: text("locale", { enum: ["tr", "en"] }).default("tr"),
+  locale: text("locale", { enum: ["zh", "en", "tr"] }).default("tr"),
   sex: text("sex", { enum: ["male", "female"] }),
   birthYear: integer("birth_year"),
   heightCm: real("height_cm"),
@@ -156,7 +156,7 @@ export const aiSuggestions = sqliteTable(
       .notNull()
       .default(sql`(unixepoch() * 1000)`),
     windowDays: integer("window_days").notNull().default(1),
-    locale: text("locale", { enum: ["tr", "en"] }).notNull().default("tr"),
+    locale: text("locale", { enum: ["zh", "en", "tr"] }).notNull().default("tr"),
     suggestionText: text("suggestion_text").notNull(),
     dismissed: integer("dismissed", { mode: "boolean" }).notNull().default(false),
   },
@@ -331,3 +331,10 @@ export type NewWeightLog = typeof weightLogs.$inferInsert;
 export type Friendship = typeof friendships.$inferSelect;
 export type NewFriendship = typeof friendships.$inferInsert;
 export type FriendPrivacy = typeof friendPrivacy.$inferSelect;
+
+// Persistent atomic AI limits across serverless instances (not an in-memory counter).
+export const aiUsage = sqliteTable("ai_usage", {
+  bucket: text("bucket").notNull(),
+  day: text("day").notNull(),
+  count: integer("count").notNull().default(0),
+}, (t) => [primaryKey({ columns: [t.bucket, t.day] })]);

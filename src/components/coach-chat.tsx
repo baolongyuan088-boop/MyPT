@@ -36,7 +36,7 @@ export function CoachChat({ initial }: Props) {
       const res = await fetch("/api/coach", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ content, locale: locale === "en" ? "en" : "tr" }),
+        body: JSON.stringify({ content, locale }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         userMsg?: CoachMessage;
@@ -56,7 +56,7 @@ export function CoachChat({ initial }: Props) {
   }
 
   async function clearAll() {
-    if (!confirm(locale === "en" ? "Clear all chat?" : "Sohbeti temizle?")) return;
+    if (!confirm(locale === "zh" ? "确定清空所有聊天记录？" : locale === "en" ? "Clear all chat?" : "Sohbeti temizle?")) return;
     const res = await fetch("/api/coach", { method: "DELETE" });
     if (res.ok) setMessages([]);
   }
@@ -109,7 +109,7 @@ export function CoachChat({ initial }: Props) {
           (() => {
             const todayKey = dayKey(new Date());
             const dayFmt = new Intl.DateTimeFormat(
-              locale === "en" ? "en-GB" : "tr-TR",
+              locale === "zh" ? "zh-CN" : locale === "en" ? "en-GB" : "tr-TR",
               { day: "numeric", month: "long" },
             );
             let lastShownDay: string | null = null;
@@ -127,7 +127,7 @@ export function CoachChat({ initial }: Props) {
                     <div className="my-2 flex items-center justify-center">
                       <span className="rounded-full bg-muted px-3 py-1 text-[11px] font-medium text-muted-foreground">
                         {mDay === todayKey
-                          ? locale === "en"
+                          ? locale === "zh" ? "今天" : locale === "en"
                             ? "Today"
                             : "Bugün"
                           : dayFmt.format(at)}

@@ -32,7 +32,7 @@ export async function GET() {
 
 const PostBody = z.object({
   content: z.string().min(1).max(2000),
-  locale: z.enum(["tr", "en"]).default("tr"),
+  locale: z.enum(["zh", "en", "tr"]).default("tr"),
 });
 
 export async function POST(req: Request) {
@@ -159,7 +159,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         error:
-          locale === "tr"
+          locale === "zh" ? "暂时无法生成建议，请确认资料已填写并稍后重试。" : locale === "tr"
             ? "Koç boş yanıt verdi. Tekrar dene."
             : "Coach returned empty reply. Try again.",
         userMsg,

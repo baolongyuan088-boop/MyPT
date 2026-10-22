@@ -14,7 +14,7 @@ export function LocaleSwitcher() {
     <div className="inline-flex items-center gap-0.5 rounded-full border border-border bg-muted/50 p-0.5 text-[11px] font-semibold">
       {routing.locales.map((l) => (
         <button
-          key={l}
+          key={{zh: "中文", en: "EN", tr: "TR"}[l]}
           onClick={() => router.replace(pathname, { locale: l })}
           className={cn(
             "h-7 w-9 rounded-full uppercase transition-colors",
@@ -24,7 +24,7 @@ export function LocaleSwitcher() {
           )}
           aria-pressed={l === locale}
         >
-          {l}
+          {{zh: "中文", en: "EN", tr: "TR"}[l]}
         </button>
       ))}
     </div>

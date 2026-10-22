@@ -8,10 +8,10 @@ import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: {
-    default: "MyPT. — Personal Trainer",
+    default: "MyPT · AI 健身饮食管家",
     template: "%s · MyPT.",
   },
-  description: "AI destekli kalori ve beslenme takibi",
+  description: "你的 AI 健身饮食管家，记录饮食与训练，获得个人建议。",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,

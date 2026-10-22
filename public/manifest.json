@@ -1,14 +1,18 @@
 {
-  "name": "MyPT. — Personal Trainer",
-  "short_name": "MyPT.",
-  "description": "AI destekli kalori ve beslenme takibi",
-  "start_url": "/",
+  "name": "MyPT · AI 健身饮食管家",
+  "short_name": "健身管家",
+  "description": "记录饮食与训练，获取个性化 AI 陪伴和建议",
+  "start_url": "/zh",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#1c1c1e",
   "background_color": "#1c1c1e",
-  "categories": ["health", "lifestyle", "fitness"],
+  "categories": [
+    "health",
+    "lifestyle",
+    "fitness"
+  ],
   "icons": [
     {
       "src": "/mypt.svg",
@@ -40,5 +44,6 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "lang": "zh-CN"
 }

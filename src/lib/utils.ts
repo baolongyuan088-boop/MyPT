@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatTime(date: Date, locale: string = "tr") {
-  return new Intl.DateTimeFormat(locale === "en" ? "en-GB" : "tr-TR", {
+  return new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : locale === "en" ? "en-GB" : "tr-TR", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
@@ -14,7 +14,7 @@ export function formatTime(date: Date, locale: string = "tr") {
 }
 
 export function formatDate(date: Date, locale: string = "tr") {
-  return new Intl.DateTimeFormat(locale === "en" ? "en-GB" : "tr-TR", {
+  return new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : locale === "en" ? "en-GB" : "tr-TR", {
     day: "2-digit",
     month: "long",
     year: "numeric",

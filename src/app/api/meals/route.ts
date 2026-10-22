@@ -14,7 +14,7 @@ import { z } from "zod";
 const PostBody = z.object({
   rawText: z.string().min(2).max(2000),
   eatenAt: z.string().datetime(),
-  locale: z.enum(["tr", "en"]).default("tr"),
+  locale: z.enum(["zh", "en", "tr"]).default("tr"),
 });
 
 export async function POST(req: Request) {

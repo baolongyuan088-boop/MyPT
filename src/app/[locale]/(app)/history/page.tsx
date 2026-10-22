@@ -45,7 +45,7 @@ export default async function HistoryPage({
     groups.get(k)!.push(r);
   }
 
-  const dayFmt = new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-GB", {
+  const dayFmt = new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : locale === "tr" ? "tr-TR" : "en-GB", {
     weekday: "long",
     day: "numeric",
     month: "long",
@@ -76,15 +76,15 @@ export default async function HistoryPage({
 
       <section className="space-y-1.5">
         <h2 className="px-4 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-          Son 14 Gün
+          {t("last14")}
         </h2>
-        <WeeklyBars series={series14} label={`Ortalama: ${avg14} kcal`} />
+        <WeeklyBars series={series14} label={t("averageLabel", {n: avg14})} />
       </section>
 
       <div className="grid grid-cols-3 gap-px rounded-2xl bg-border overflow-hidden">
-        <StatCell label="Ortalama" value={`${avg14}`} unit={tCommon("kcal")} />
-        <StatCell label="Gün" value={`${loggedDays}`} unit="/14" />
-        <StatCell label="Toplam" value={`${Math.round(totalKcal / 1000)}k`} unit={tCommon("kcal")} />
+        <StatCell label={t("average")} value={`${avg14}`} unit={tCommon("kcal")} />
+        <StatCell label={t("days")} value={`${loggedDays}`} unit="/14" />
+        <StatCell label={t("total")} value={`${Math.round(totalKcal / 1000)}k`} unit={tCommon("kcal")} />
       </div>
 
       {Array.from(groups.entries()).map(([k, items]) => {

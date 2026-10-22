@@ -1,3 +1,5 @@
+
+import { exerciseName } from "@/lib/exercise-name";
 import { safeAIError } from "@/lib/ai/client";
 import { auth } from "@/auth";
 import { db } from "@/db/client";
@@ -12,7 +14,7 @@ import { z } from "zod";
 export const runtime = "nodejs";
 
 const PostBody = z.object({
-  locale: z.enum(["tr", "en"]).default("tr"),
+  locale: z.enum(["zh", "en", "tr"]).default("tr"),
 });
 
 export async function POST(req: Request) {
@@ -34,7 +36,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         error:
-          locale === "tr"
+          locale === "zh" ? "暂时无法生成建议，请确认资料已填写并稍后重试。" : locale === "tr"
             ? "Önce profilini doldur (boy, kilo, yaş, cinsiyet)."
             : "Fill your profile first (height, weight, age, sex).",
       },
@@ -120,7 +122,7 @@ export async function POST(req: Request) {
       const c = catalogById.get(e.exerciseSlug)!;
       return {
         exerciseId: e.exerciseSlug,
-        exerciseName: locale === "en" ? c.nameEn : c.nameTr,
+        exerciseName: exerciseName(c, locale),
         sets: e.sets,
         reps: e.reps,
       };
@@ -130,7 +132,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         error:
-          locale === "tr"
+          locale === "zh" ? "暂时无法生成建议，请确认资料已填写并稍后重试。" : locale === "tr"
             ? "AI yeterli geçerli egzersiz öneremedi. Tekrar dene."
             : "AI could not suggest enough valid exercises. Try again.",
       },
