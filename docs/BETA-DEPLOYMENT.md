@@ -35,3 +35,7 @@
 ## 上线验收
 
 无邀请码不能登录；错误、过期、撤销的邀请码不可用；两个邀请码的记录隔离；本机登录入口和 AI 配置接口线上不可用；AI 实际调用成功；限额有效；手机 HTTPS 打开；记录在服务重启后保留。
+
+## EdgeOne 构建兼容性
+
+生产构建显式使用 `next build --webpack`。2026-10-22 的 Turbopack 构建虽在平台显示成功，但线上语言路由报 `Middleware execution failed` / `module factory was not available`。此切换用于规避该打包路径；必须在新部署中重新验证 `/`、`/zh/signin` 和 API，不能仅以构建成功判断修复。
