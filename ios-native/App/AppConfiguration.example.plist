@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowedHost</key>
+	<string>myptfitness.edgeone.dev</string>
+	<key>DefaultURL</key>
+	<string>https://myptfitness.edgeone.dev/</string>
+	<key>Title</key>
+	<string>健身管家</string>
+</dict>
+</plist>
