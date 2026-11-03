@@ -39,3 +39,11 @@
 ## EdgeOne 构建兼容性
 
 生产构建显式使用 `next build --webpack`。2026-10-22 的 Turbopack 构建虽在平台显示成功，但线上语言路由报 `Middleware execution failed` / `module factory was not available`。此切换用于规避该打包路径；必须在新部署中重新验证 `/`、`/zh/signin` 和 API，不能仅以构建成功判断修复。
+
+## iPhone 桌面入口
+
+登录页提供“添加到 iPhone 桌面”的 Safari 操作说明，manifest、Apple 图标和独立窗口配置已包含在仓库。饮食记录同步与 AI 仍需要联网，安装桌面图标不会把后端搬到手机上。
+
+长期安装应使用已配置 HTTPS 的自定义域名。EdgeOne 默认项目域名在中国大陆使用系统预览链接，链接有效期为 3 小时，不宜作为长期桌面入口。中国大陆区域绑定的自定义域名需先完成 ICP 备案；全球区域（不含中国大陆）不要求 ICP 备案，仍需实测目标手机网络。参见 [EdgeOne 域名说明](https://pages.edgeone.ai/document/domain-overview)。
+
+2026-11-03 已修正 myptfitness 正式与预览环境的数据库令牌，并补齐已准备的内测邀请摘要和到期时间，保留原 AI 与会话配置。数据库令牌的独立连接验证通过；这不替代生产登录、记录写入和手机验收。数据库令牌与内测邀请都有有效期，长期使用前需安排更新。

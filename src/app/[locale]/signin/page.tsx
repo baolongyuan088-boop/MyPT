@@ -65,6 +65,33 @@ export default async function SignInPage({
             </Button>
           </form>}
 
+          <details className="rounded-2xl border border-border p-4 text-left text-sm">
+            <summary className="cursor-pointer font-medium">
+              {locale === "zh" ? "添加到 iPhone 桌面" : "Add to your iPhone Home Screen"}
+            </summary>
+            {locale === "zh" ? (
+              <div className="mt-3 space-y-2 leading-relaxed text-muted-foreground">
+                <p>在 iPhone 上用 Safari 打开本站。微信内打开时，先选择在浏览器中打开。</p>
+                <ol className="list-decimal space-y-1 pl-5">
+                  <li>轻点 Safari 的分享按钮，选择“添加到主屏幕”。</li>
+                  <li>如果看到“作为网页 App 打开”，保持开启，再点“添加”。</li>
+                  <li>回到桌面，轻点“健身管家”图标，使用自己的邀请码登录。</li>
+                </ol>
+                <p>饮食、训练同步和 AI 对话需要联网。</p>
+              </div>
+            ) : (
+              <div className="mt-3 space-y-2 leading-relaxed text-muted-foreground">
+                <p>Open this site in Safari on your iPhone.</p>
+                <ol className="list-decimal space-y-1 pl-5">
+                  <li>Tap Share, then Add to Home Screen.</li>
+                  <li>Keep Open as Web App enabled if shown, then tap Add.</li>
+                  <li>Open the Home Screen icon and sign in with your invitation.</li>
+                </ol>
+                <p>Syncing records and chatting with AI require an internet connection.</p>
+              </div>
+            )}
+          </details>
+
           <p className="text-xs text-muted-foreground">{t("privacy")}</p>
         </div>
       </main>
