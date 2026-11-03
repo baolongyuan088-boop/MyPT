@@ -47,3 +47,5 @@
 长期安装应使用已配置 HTTPS 的自定义域名。EdgeOne 默认项目域名在中国大陆使用系统预览链接，链接有效期为 3 小时，不宜作为长期桌面入口。中国大陆区域绑定的自定义域名需先完成 ICP 备案；全球区域（不含中国大陆）不要求 ICP 备案，仍需实测目标手机网络。参见 [EdgeOne 域名说明](https://pages.edgeone.ai/document/domain-overview)。
 
 2026-11-03 已修正 myptfitness 正式与预览环境的数据库令牌，并补齐已准备的内测邀请摘要和到期时间，保留原 AI 与会话配置。数据库令牌的独立连接验证通过；这不替代生产登录、记录写入和手机验收。数据库令牌与内测邀请都有有效期，长期使用前需安排更新。
+
+2026-11-04 内测登录改为标准 HTML POST `/api/beta-login`，避免已打开的手机页面在新部署后继续提交旧 Server Action（线上出现过 409）。认证仍由原有 NextAuth invite provider 完成，保留邀请码隔离和到期校验。路由检查完整的请求 Origin，`MYPT_ALLOWED_ORIGINS` 可精确指定公共 HTTPS 来源；不使用客户端传来的转发域名构造重定向，也不接受自定义 callback URL。当前正式值为 `https://myptfitness.edgeone.dev`，更换域名时同步更新。
